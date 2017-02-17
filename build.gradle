@@ -25,12 +25,11 @@ task clean(type: Delete) {
 // Define versions in a single place
 ext {
     // Sdk and tools
-    minSdkVersion = 10
-    targetSdkVersion = 22
-    compileSdkVersion = 23
-    buildToolsVersion = '23.0.3'
+    minSdkVersion = 15
+    targetSdkVersion = 25
+    compileSdkVersion = 25
+    buildToolsVersion = '25.0.2'
 
-    // App dependencies
     supportLibraryVersion = '23.4.0'
     guavaVersion = '18.0'
     glideVersion = '3.6.1'
@@ -41,4 +40,8 @@ ext {
     runnerVersion = '0.5'
     rulesVersion = '0.5'
     espressoVersion = '2.2.2'
+    gsonVersion = '2.6.2'
+    retrofitVersion = '2.0.2'
+    butterKnifeVersion = '8.5.1'
+    expressoVersion = '2.2.2'
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TestingDemo</string>
+    <string name="toast_valid_email">Email address is valid</string>
+    <string name="toast_invalid_email">Email is invalid</string>
 </resources>
