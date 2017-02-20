@@ -13,19 +13,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     private static Retrofit sRetrofit;
-    private static final ApiClient API_CLIENT = new ApiClient();
-//    private final ApiInterface mApiInterface;
-
-   /* private ApiClient() {
-        if (sRetrofit == null) {
-            sRetrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.Urls.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
-        this.mApiInterface = sRetrofit.create(ApiInterface.class);
-    }*/
-
     public static Retrofit getInstance() {
         if (sRetrofit == null) {
             sRetrofit = new Retrofit.Builder()
@@ -35,12 +22,4 @@ public class ApiClient {
         }
         return sRetrofit;
     }
-
-   /* public void getUsers(final Subscriber<List<UserResponse>> subscriber) {
-        mApiInterface.getUsers()
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
-    }*/
 }

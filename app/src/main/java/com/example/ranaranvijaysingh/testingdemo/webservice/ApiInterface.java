@@ -15,6 +15,5 @@ import retrofit2.http.GET;
 
 public interface ApiInterface {
     @GET(Constants.Urls.USERS)
-//    Observable<List<UserResponse>> getUsers();
     Call<List<UserResponse>> getUsers();
 }
