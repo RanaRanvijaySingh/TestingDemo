@@ -2,41 +2,35 @@ package com.example.ranaranvijaysingh.testingdemo.presenters;
 
 import com.example.ranaranvijaysingh.testingdemo.models.UserResponse;
 import com.example.ranaranvijaysingh.testingdemo.utilities.Constants;
+import com.example.ranaranvijaysingh.testingdemo.views.interfaces.ApiBridges;
 import com.example.ranaranvijaysingh.testingdemo.views.interfaces.MainView;
-import com.example.ranaranvijaysingh.testingdemo.webservice.ApiClient;
-import com.example.ranaranvijaysingh.testingdemo.webservice.ApiInterface;
+import com.example.ranaranvijaysingh.testingdemo.webservice.WebService;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class MainPresenter {
+public class MainPresenter implements ApiBridges.OnGetUserListApiCall {
     private final MainView mMainView;
-    private final Call<List<UserResponse>> mCallListUserResponse;
+    private final WebService mWebService;
 
     public MainPresenter(final MainView mainView) {
         this.mMainView = mainView;
-        final ApiInterface apiInterface = ApiClient.getInstance().create(ApiInterface.class);
-        mCallListUserResponse = apiInterface.getUsers();
+        mWebService = new WebService();
     }
 
     public void presentDataFromApi() {
         mMainView.showProgressDialog(true);
-        mCallListUserResponse.enqueue(new Callback<List<UserResponse>>() {
-            @Override
-            public void onResponse(final Call<List<UserResponse>> call,
-                                   final Response<List<UserResponse>> response) {
-                mMainView.onResponseReceived(Constants.DummyData.SUCCESS);
-                mMainView.showProgressDialog(false);
-            }
+        mWebService.makeUserListApiCall(this);
+    }
 
-            @Override
-            public void onFailure(final Call<List<UserResponse>> call, final Throwable t) {
-                mMainView.onErrorReceived(Constants.DummyData.ERROR);
-                mMainView.showProgressDialog(false);
-            }
-        });
+    @Override
+    public void onSuccess(final List<UserResponse> userResponseList) {
+        mMainView.onResponseReceived(Constants.DummyData.SUCCESS);
+        mMainView.showProgressDialog(false);
+    }
+
+    @Override
+    public void onError(final String message) {
+        mMainView.onErrorReceived(Constants.DummyData.ERROR);
+        mMainView.showProgressDialog(false);
     }
 }

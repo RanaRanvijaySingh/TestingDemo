@@ -1,4 +1,4 @@
-package com.example.ranaranvijaysingh.testingdemo.dummydata;
+package com.example.ranaranvijaysingh.testingdemo.presenters.dummydata;
 
 import com.example.ranaranvijaysingh.testingdemo.models.UserResponse;
 import com.google.gson.Gson;
@@ -245,7 +245,7 @@ public class DummyDataGenerator {
             "]";
 
     public static List<UserResponse> getResponseList() {
-        UserResponse[] userResponseArray = new Gson().fromJson(JSON_RESPONE, UserResponse[].class);
+        final UserResponse[] userResponseArray = new Gson().fromJson(JSON_RESPONE, UserResponse[].class);
         return Arrays.asList(userResponseArray);
     }
 }

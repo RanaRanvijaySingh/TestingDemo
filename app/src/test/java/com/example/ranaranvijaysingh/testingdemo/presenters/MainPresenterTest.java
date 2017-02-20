@@ -1,7 +1,10 @@
 package com.example.ranaranvijaysingh.testingdemo.presenters;
 
-import com.example.ranaranvijaysingh.testingdemo.models.UserResponse;
+import com.example.ranaranvijaysingh.testingdemo.presenters.dummydata.DummyDataGenerator;
+import com.example.ranaranvijaysingh.testingdemo.utilities.Constants;
+import com.example.ranaranvijaysingh.testingdemo.views.interfaces.ApiBridges;
 import com.example.ranaranvijaysingh.testingdemo.views.interfaces.MainView;
+import com.example.ranaranvijaysingh.testingdemo.webservice.WebService;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +13,6 @@ import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
 
 import static org.mockito.Mockito.verify;
 
@@ -30,21 +28,26 @@ public class MainPresenterTest {
     @Mock
     private MainView mMockMainView;
     @Mock
-    private Call<List<UserResponse>> mUserResponseCall;
+    private WebService mMockWebService;
+    @Mock
+    private ApiBridges.OnGetUserListApiCall mOnGetUserListApiCall;
     @Captor
-    private ArgumentCaptor<Callback<List<UserResponse>>> mArgumentCaptorUserResponse;
+    private ArgumentCaptor<ApiBridges.OnGetUserListApiCall> mCaptor;
+//    private WebService mMockWebService;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
+//        mMockWebService = new WebService();
     }
 
     @Test
     public void presentDataFromApiTest() throws Exception {
         mMainPresenter.presentDataFromApi();
         verify(mMockMainView).showProgressDialog(true);
-//        verify(mUserResponseCall).enqueue(mArgumentCaptorUserResponse.capture());
-//        verify(mMockMainView).onResponseReceived(Constants.DummyData.SUCCESS);
-//        verify(mMockMainView).showProgressDialog(false);
+        verify(mMockWebService).makeUserListApiCall(mCaptor.capture());
+        mCaptor.getValue().onSuccess(DummyDataGenerator.getResponseList());
+        verify(mMockMainView).onResponseReceived(Constants.DummyData.SUCCESS);
+        verify(mMockMainView).showProgressDialog(false);
     }
 }

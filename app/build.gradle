@@ -16,6 +16,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+        }
+    }
+    productFlavors {
+        prod {
+
+        }
+        dev {
+            
+        }
     }
     testOptions {
         unitTests.returnDefaultValues = true
