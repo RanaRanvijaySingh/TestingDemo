@@ -5,8 +5,8 @@ import com.example.ranaranvijaysingh.testingdemo.utilities.Constants;
 
 import java.util.List;
 
+import retrofit2.Call;
 import retrofit2.http.GET;
-import rx.Observable;
 
 /**
  * Created by on 15/02/17.
@@ -15,6 +15,6 @@ import rx.Observable;
 
 public interface ApiInterface {
     @GET(Constants.Urls.USERS)
-    Observable<List<UserResponse>> getUsers();
-//    Call<List<UserResponse>> getUsers();
+//    Observable<List<UserResponse>> getUsers();
+    Call<List<UserResponse>> getUsers();
 }

@@ -14,9 +14,9 @@ public class ApiClient {
 
     private static Retrofit sRetrofit;
     private static final ApiClient API_CLIENT = new ApiClient();
-    private final ApiInterface mApiInterface;
+//    private final ApiInterface mApiInterface;
 
-    private ApiClient() {
+   /* private ApiClient() {
         if (sRetrofit == null) {
             sRetrofit = new Retrofit.Builder()
                     .baseUrl(Constants.Urls.BASE_URL)
@@ -24,10 +24,16 @@ public class ApiClient {
                     .build();
         }
         this.mApiInterface = sRetrofit.create(ApiInterface.class);
-    }
+    }*/
 
-    public static ApiClient getInstance() {
-        return API_CLIENT;
+    public static Retrofit getInstance() {
+        if (sRetrofit == null) {
+            sRetrofit = new Retrofit.Builder()
+                    .baseUrl(Constants.Urls.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return sRetrofit;
     }
 
    /* public void getUsers(final Subscriber<List<UserResponse>> subscriber) {

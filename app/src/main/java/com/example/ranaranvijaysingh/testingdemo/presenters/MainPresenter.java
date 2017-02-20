@@ -16,13 +16,15 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import rx.Subscriber;
 
 public class MainPresenter {
     private final MainView mMainView;
+    private final Call<List<UserResponse>> mCallListUserResponse;
 
     public MainPresenter(final MainView mainView) {
         this.mMainView = mainView;
+        final ApiInterface apiInterface = ApiClient.getInstance().create(ApiInterface.class);
+        mCallListUserResponse = apiInterface.getUsers();
     }
 
     public void presentFullName() {
@@ -65,8 +67,7 @@ public class MainPresenter {
 
     public void presentDataFromApi() {
         mMainView.showProgressDialog(true);
-        final Call<List<UserResponse>> userResponseCall = ApiClient.getInstance().getUsers();
-        userResponseCall.enqueue(new Callback<List<UserResponse>>() {
+        mCallListUserResponse.enqueue(new Callback<List<UserResponse>>() {
             @Override
             public void onResponse(final Call<List<UserResponse>> call,
                                    final Response<List<UserResponse>> response) {
