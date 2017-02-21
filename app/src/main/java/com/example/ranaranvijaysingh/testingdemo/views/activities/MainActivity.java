@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private void initializeComponents() {
         mainPresenter = new MainPresenter(this);
         mainPresenter.presentFullName();
-        mainPresenter.presentDataFromApi();
     }
 
     @Override
