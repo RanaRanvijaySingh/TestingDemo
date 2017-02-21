@@ -14,7 +14,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by on 14/02/17.
@@ -43,6 +45,7 @@ public class MainPresenterTest {
 
     @Test
     public void presentDataFromApiTest() throws Exception {
+        when(mMockWebService.makeUserListApiCall(any())).thenReturn()
         mMainPresenter.presentDataFromApi();
         verify(mMockMainView).showProgressDialog(true);
         verify(mMockWebService).makeUserListApiCall(mCaptor.capture());
