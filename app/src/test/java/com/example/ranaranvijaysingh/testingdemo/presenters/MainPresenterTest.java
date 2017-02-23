@@ -40,13 +40,24 @@ public class MainPresenterTest {
     }
 
     @Test
-    public void presentDataFromApiTest() throws Exception {
-        mMainPresenter.setmWebService(mMockWebService);
+    public void presentDataFromApiTestForSuccess() throws Exception {
+        mMainPresenter.setWebService(mMockWebService);
         mMainPresenter.presentDataFromApi();
         verify(mMockMainView).showProgressDialog(true);
         verify(mMockWebService).makeUserListApiCall(mCaptor.capture());
         mCaptor.getValue().onSuccess(DummyDataGenerator.getResponseList());
         verify(mMockMainView).onResponseReceived(Constants.DummyData.SUCCESS);
+        verify(mMockMainView).showProgressDialog(false);
+    }
+
+    @Test
+    public void presentDataFromApiTestForError() throws Exception {
+        mMainPresenter.setWebService(mMockWebService);
+        mMainPresenter.presentDataFromApi();
+        verify(mMockMainView).showProgressDialog(true);
+        verify(mMockWebService).makeUserListApiCall(mCaptor.capture());
+        mCaptor.getValue().onError(Constants.DummyData.ERROR);
+        verify(mMockMainView).onErrorReceived(Constants.DummyData.ERROR);
         verify(mMockMainView).showProgressDialog(false);
     }
 }

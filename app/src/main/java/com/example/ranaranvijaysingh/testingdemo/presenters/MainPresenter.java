@@ -8,11 +8,11 @@ import com.example.ranaranvijaysingh.testingdemo.webservice.WebService;
 
 import java.util.List;
 
-public class MainPresenter implements ApiBridges.OnGetUserListApiCall {
+public class MainPresenter {
     private final MainView mMainView;
     private WebService mWebService;
 
-    public void setmWebService(final WebService mWebService) {
+    public void setWebService(final WebService mWebService) {
         this.mWebService = mWebService;
     }
 
@@ -23,18 +23,18 @@ public class MainPresenter implements ApiBridges.OnGetUserListApiCall {
 
     public void presentDataFromApi() {
         mMainView.showProgressDialog(true);
-        mWebService.makeUserListApiCall(this);
-    }
+        mWebService.makeUserListApiCall(new ApiBridges.OnGetUserListApiCall() {
+            @Override
+            public void onSuccess(final List<UserResponse> userResponseList) {
+                mMainView.onResponseReceived(Constants.DummyData.SUCCESS);
+                mMainView.showProgressDialog(false);
+            }
 
-    @Override
-    public void onSuccess(final List<UserResponse> userResponseList) {
-        mMainView.onResponseReceived(Constants.DummyData.SUCCESS);
-        mMainView.showProgressDialog(false);
-    }
-
-    @Override
-    public void onError(final String message) {
-        mMainView.onErrorReceived(Constants.DummyData.ERROR);
-        mMainView.showProgressDialog(false);
+            @Override
+            public void onError(final String message) {
+                mMainView.onErrorReceived(Constants.DummyData.ERROR);
+                mMainView.showProgressDialog(false);
+            }
+        });
     }
 }
