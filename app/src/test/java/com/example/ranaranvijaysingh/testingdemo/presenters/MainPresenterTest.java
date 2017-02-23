@@ -22,15 +22,14 @@ import static org.mockito.Mockito.verify;
  * Created by on 14/02/17.
  * Purpose of this class is to
  */
-
 public class MainPresenterTest {
 
-    @InjectMocks
-    private MainPresenter mMainPresenter;
     @Mock
     private MainView mMockMainView;
     @Mock
     private Call<List<UserResponse>> mUserResponseCall;
+    @InjectMocks
+    private MainPresenter mMainPresenter;
     @Captor
     private ArgumentCaptor<Callback<List<UserResponse>>> mArgumentCaptorUserResponse;
 
@@ -41,9 +40,10 @@ public class MainPresenterTest {
 
     @Test
     public void presentDataFromApiTest() throws Exception {
+        mMainPresenter.setUserResponseCall(mUserResponseCall);
         mMainPresenter.presentDataFromApi();
         verify(mMockMainView).showProgressDialog(true);
-//        verify(mUserResponseCall).enqueue(mArgumentCaptorUserResponse.capture());
+        verify(mUserResponseCall).enqueue(mArgumentCaptorUserResponse.capture());
 //        verify(mMockMainView).onResponseReceived(Constants.DummyData.SUCCESS);
 //        verify(mMockMainView).showProgressDialog(false);
     }

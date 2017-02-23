@@ -13,13 +13,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainPresenter {
-    private final MainView mMainView;
-    private final Call<List<UserResponse>> mCallListUserResponse;
+    private MainView mMainView;
+    private Call<List<UserResponse>> mCallListUserResponse;
 
     public MainPresenter(final MainView mainView) {
         this.mMainView = mainView;
         final ApiInterface apiInterface = ApiClient.getInstance().create(ApiInterface.class);
         mCallListUserResponse = apiInterface.getUsers();
+    }
+
+    void setUserResponseCall(Call<List<UserResponse>> userResponse){
+        mCallListUserResponse = userResponse;
     }
 
     public void presentDataFromApi() {
