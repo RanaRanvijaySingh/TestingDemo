@@ -10,7 +10,11 @@ import java.util.List;
 
 public class MainPresenter implements ApiBridges.OnGetUserListApiCall {
     private final MainView mMainView;
-    private final WebService mWebService;
+    private WebService mWebService;
+
+    public void setmWebService(final WebService mWebService) {
+        this.mWebService = mWebService;
+    }
 
     public MainPresenter(final MainView mainView) {
         this.mMainView = mainView;

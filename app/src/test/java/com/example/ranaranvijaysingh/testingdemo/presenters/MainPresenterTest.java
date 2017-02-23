@@ -8,11 +8,12 @@ import com.example.ranaranvijaysingh.testingdemo.webservice.WebService;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.verify;
 
@@ -20,29 +21,27 @@ import static org.mockito.Mockito.verify;
  * Created by on 14/02/17.
  * Purpose of this class is to
  */
-
+@RunWith(MockitoJUnitRunner.class)
 public class MainPresenterTest {
 
-    @InjectMocks
-    private MainPresenter mMainPresenter;
     @Mock
     private MainView mMockMainView;
     @Mock
     private WebService mMockWebService;
     @Mock
     private ApiBridges.OnGetUserListApiCall mOnGetUserListApiCall;
+    @InjectMocks
+    private MainPresenter mMainPresenter;
     @Captor
     private ArgumentCaptor<ApiBridges.OnGetUserListApiCall> mCaptor;
-//    private WebService mMockWebService;
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-//        mMockWebService = new WebService();
     }
 
     @Test
     public void presentDataFromApiTest() throws Exception {
+        mMainPresenter.setmWebService(mMockWebService);
         mMainPresenter.presentDataFromApi();
         verify(mMockMainView).showProgressDialog(true);
         verify(mMockWebService).makeUserListApiCall(mCaptor.capture());
