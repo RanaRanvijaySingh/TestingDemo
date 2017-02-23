@@ -11,10 +11,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -43,11 +46,12 @@ public class MainPresenterTest {
     public void presentDataFromApiTestForSuccess() throws Exception {
         mMainPresenter.setWebService(mMockWebService);
         mMainPresenter.presentDataFromApi();
-        verify(mMockMainView).showProgressDialog(true);
-        verify(mMockWebService).makeUserListApiCall(mCaptor.capture());
+        InOrder inOrder = inOrder(mMockMainView);
+        inOrder.verify(mMockMainView,times(1)).showProgressDialog(true);
+        inOrder.verify(mMockWebService).makeUserListApiCall(mCaptor.capture());
         mCaptor.getValue().onSuccess(DummyDataGenerator.getResponseList());
-        verify(mMockMainView).onResponseReceived(Constants.DummyData.SUCCESS);
-        verify(mMockMainView).showProgressDialog(false);
+        inOrder.verify(mMockMainView).onResponseReceived(Constants.DummyData.SUCCESS);
+        inOrder.verify(mMockMainView).showProgressDialog(false);
     }
 
     @Test
