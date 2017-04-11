@@ -1,12 +1,11 @@
 package com.example.ranaranvijaysingh.testingdemo.views.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ranaranvijaysingh.testingdemo.R;
@@ -19,21 +18,19 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
-    @BindView(R.id.textViewFullName)
-    TextView textViewFullName;
-    @BindView(R.id.textViewApiData)
-    TextView textViewApiData;
-    @BindView(R.id.progressBarLoading)
-    ProgressBar progressBarLoading;
     @BindView(R.id.editTextEmailAddress)
-    EditText editTextEmailAddress;
-    @BindView(R.id.buttonCheckEmail)
-    Button buttonCheckEmail;
+    EditText mEditTextEmailAddress;
+    @BindView(R.id.editTextPassword)
+    EditText mEditTextPassword;
+    @BindView(R.id.buttonLogin)
+    Button mButtonLogin;
+    @BindView(R.id.progressBarLoading)
+    ProgressBar mProgressBarLoading;
 
-    private MainPresenter mainPresenter;
+    private MainPresenter mMainPresenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -41,43 +38,38 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     private void initializeComponents() {
-        mainPresenter = new MainPresenter(this);
-        mainPresenter.presentFullName();
+        mMainPresenter = new MainPresenter(this);
+    }
+
+    @OnClick(R.id.buttonLogin)
+    public void onLoginButtonClick(final View view) {
+        mMainPresenter.verifyLoginCredentials(
+                mEditTextEmailAddress.getText().toString(),
+                mEditTextPassword.getText().toString());
     }
 
     @Override
-    public void setFullName(String fullName) {
-        textViewFullName.setText(fullName);
+    public void showInvalidEmailMessage() {
+        Toast.makeText(this, "Please enter valid email id.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onResponseReceived(String response) {
-        textViewApiData.setText(response);
+    public void showInvalidPasswordMessage() {
+        Toast.makeText(this, "Please enter password.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onErrorReceived(String message) {
-        textViewApiData.setText(message);
+    public void showProgressDialog(final boolean showProgressDialog) {
+        mProgressBarLoading.setVisibility(showProgressDialog ? View.VISIBLE : View.INVISIBLE);
     }
 
     @Override
-    public void showProgressDialog(boolean enableProgressDialog) {
-        progressBarLoading.setVisibility(enableProgressDialog ? View.VISIBLE : View.GONE);
-    }
-
-    @OnClick(R.id.buttonCheckEmail)
-    public void onClickEmailCheckButton(View view) {
-        mainPresenter.onClickEmailCheckButton();
+    public void onResponseReceived(final String success) {
+        Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public String getEmailAddress() {
-        return editTextEmailAddress.getText().toString();
-    }
-
-    @Override
-    public void showValidEmailMessage(boolean isEmailValid) {
-        Toast.makeText(this, isEmailValid ? R.string.toast_valid_email :
-                R.string.toast_invalid_email, Toast.LENGTH_SHORT).show();
+    public void onErrorReceived(final String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,19 +1,14 @@
 package com.example.ranaranvijaysingh.testingdemo.views.interfaces;
 
-import com.example.ranaranvijaysingh.testingdemo.models.UserResponse;
-
-import java.util.List;
-
 public interface MainView {
-    void setFullName(String fullName);
 
-    void onResponseReceived(String response);
+    void showInvalidEmailMessage();
 
-    void onErrorReceived(String message);
+    void showInvalidPasswordMessage();
 
-    void showProgressDialog(boolean enableProgressDialog);
+    void showProgressDialog(boolean showProgressDialog);
 
-    String getEmailAddress();
+    void onResponseReceived(String success);
 
-    void showValidEmailMessage(boolean isEmailValid);
+    void onErrorReceived(String error);
 }
