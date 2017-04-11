@@ -22,5 +22,7 @@ public class Constants {
         public static final String LAST_NAME = "Last";
         public static final String SUCCESS = "Success";
         public static final String ERROR = "Unable to fetch data";
+        public static final String INVALID_EMAIL = "Please enter valid email id.";
+        public static final String INVALID_PASSWORD = "Please enter password.";
     }
 }

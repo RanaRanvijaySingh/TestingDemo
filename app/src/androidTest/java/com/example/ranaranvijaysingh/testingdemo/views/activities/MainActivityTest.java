@@ -53,4 +53,34 @@ public class MainActivityTest {
                         is(mActivityRule.getActivity().getWindow().getDecorView()))))
                 .check(matches(isDisplayed()));
     }
+
+    @Test
+    public void loginFlowTestForInvalidEmail() throws Exception {
+        Espresso.onView(ViewMatchers.withId(R.id.editTextEmailAddress))
+                .perform(ViewActions.typeText("rana@"));
+        Espresso.onView(ViewMatchers.withId(R.id.editTextPassword))
+                .perform(ViewActions.typeText("poiuytrewq"));
+        Espresso.closeSoftKeyboard();
+        Espresso.onView(ViewMatchers.withId(R.id.buttonLogin))
+                .perform(ViewActions.click());
+        Espresso.onView(ViewMatchers.withText(Constants.DummyData.INVALID_EMAIL))
+                .inRoot(withDecorView(not(
+                        is(mActivityRule.getActivity().getWindow().getDecorView()))))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void loginFlowTestForInvalidPassword() throws Exception {
+        Espresso.onView(ViewMatchers.withId(R.id.editTextEmailAddress))
+                .perform(ViewActions.typeText("rana@gmail.com"));
+        Espresso.onView(ViewMatchers.withId(R.id.editTextPassword))
+                .perform(ViewActions.typeText(""));
+        Espresso.closeSoftKeyboard();
+        Espresso.onView(ViewMatchers.withId(R.id.buttonLogin))
+                .perform(ViewActions.click());
+        Espresso.onView(ViewMatchers.withText(Constants.DummyData.INVALID_PASSWORD))
+                .inRoot(withDecorView(not(
+                        is(mActivityRule.getActivity().getWindow().getDecorView()))))
+                .check(matches(isDisplayed()));
+    }
 }

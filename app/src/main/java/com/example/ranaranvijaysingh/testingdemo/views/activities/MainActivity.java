@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.ranaranvijaysingh.testingdemo.R;
 import com.example.ranaranvijaysingh.testingdemo.presenters.MainPresenter;
+import com.example.ranaranvijaysingh.testingdemo.utilities.Constants;
 import com.example.ranaranvijaysingh.testingdemo.views.interfaces.MainView;
 
 import butterknife.BindView;
@@ -50,12 +51,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void showInvalidEmailMessage() {
-        Toast.makeText(this, "Please enter valid email id.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Constants.DummyData.INVALID_EMAIL, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showInvalidPasswordMessage() {
-        Toast.makeText(this, "Please enter password.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Constants.DummyData.INVALID_PASSWORD, Toast.LENGTH_SHORT).show();
     }
 
     @Override
