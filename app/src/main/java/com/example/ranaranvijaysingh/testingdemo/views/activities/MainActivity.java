@@ -1,11 +1,13 @@
 package com.example.ranaranvijaysingh.testingdemo.views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ranaranvijaysingh.testingdemo.R;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     Button mButtonLogin;
     @BindView(R.id.progressBarLoading)
     ProgressBar mProgressBarLoading;
+    @BindView(R.id.textViewResponse)
+    TextView mTextViewResponse;
 
     private MainPresenter mMainPresenter;
 
@@ -49,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 mEditTextPassword.getText().toString());
     }
 
+    @OnClick(R.id.buttonSpinnerExample)
+    public void onSpinnerButtonClick(final View view) {
+        startActivity(new Intent(this, SpinnerDemoActivity.class));
+    }
+
     @Override
     public void showInvalidEmailMessage() {
         Toast.makeText(this, Constants.DummyData.INVALID_EMAIL, Toast.LENGTH_SHORT).show();
@@ -67,10 +76,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void onResponseReceived(final String success) {
         Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
+        mTextViewResponse.setText(success);
     }
 
     @Override
     public void onErrorReceived(final String error) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        mTextViewResponse.setText(error);
     }
 }

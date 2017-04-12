@@ -9,6 +9,7 @@ public class Constants {
         public static final String SPACE = " ";
         public static final String ANNOTATION = "@";
         public static final String DOT = ".";
+        public static final String BLANK = "";
     }
 
     public class Urls {
