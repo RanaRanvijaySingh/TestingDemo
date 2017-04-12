@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @OnClick(R.id.buttonSpinnerExample)
     public void onSpinnerButtonClick(final View view) {
-        startActivity(new Intent(this, SpinnerDemoActivity.class));
+        final Intent intent = new Intent(this, SpinnerDemoActivity.class);
+        startActivity(intent);
     }
 
     @Override
