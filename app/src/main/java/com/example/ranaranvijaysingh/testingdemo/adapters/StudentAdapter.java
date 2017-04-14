@@ -23,9 +23,8 @@ public class StudentAdapter extends BaseAdapter {
     private List<UserResponse> mStudentList = new ArrayList<>();
     private final Context mContext;
 
-    public StudentAdapter(final Context context, final List<UserResponse> responseList) {
+    public StudentAdapter(final Context context) {
         this.mContext = context;
-        this.mStudentList = responseList;
     }
 
     @Override
@@ -53,5 +52,10 @@ public class StudentAdapter extends BaseAdapter {
         textViewEmail.setText(mStudentList.get(position).getEmail());
         textViewPhone.setText(mStudentList.get(position).getPhone());
         return convertView;
+    }
+
+    public void setList(final List<UserResponse> studentList) {
+        mStudentList = studentList;
+        notifyDataSetChanged();
     }
 }

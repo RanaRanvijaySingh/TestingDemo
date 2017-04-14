@@ -245,7 +245,7 @@ public class DummyDataGenerator {
             "]";
 
     public static List<UserResponse> getResponseList() {
-        UserResponse[] userResponseArray = new Gson().fromJson(JSON_RESPONE, UserResponse[].class);
+        final UserResponse[] userResponseArray = new Gson().fromJson(JSON_RESPONE, UserResponse[].class);
         return Arrays.asList(userResponseArray);
     }
 }

@@ -11,8 +11,12 @@ import android.widget.Toast;
 
 import com.example.ranaranvijaysingh.testingdemo.R;
 import com.example.ranaranvijaysingh.testingdemo.adapters.StudentAdapter;
-import com.example.ranaranvijaysingh.testingdemo.dummydata.DummyDataGenerator;
+import com.example.ranaranvijaysingh.testingdemo.models.UserResponse;
+import com.example.ranaranvijaysingh.testingdemo.presenters.StudentPresenter;
 import com.example.ranaranvijaysingh.testingdemo.utilities.Constants;
+import com.example.ranaranvijaysingh.testingdemo.views.interfaces.StudentView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,20 +28,24 @@ import static com.example.ranaranvijaysingh.testingdemo.R.id.listViewStudent;
  * Purpose of this class is to
  */
 
-class StudentActivity extends AppCompatActivity {
+class StudentActivity extends AppCompatActivity implements StudentView {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(listViewStudent)
     ListView mListViewStudent;
+    private StudentPresenter mStudentPresenter;
+    private StudentAdapter mStudentAdapter;
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students);
         ButterKnife.bind(this);
+        mStudentPresenter = new StudentPresenter(this);
         initializeToolBar();
         initializeListView();
+        mStudentPresenter.presentStudentList();
     }
 
     private void initializeToolBar() {
@@ -45,9 +53,8 @@ class StudentActivity extends AppCompatActivity {
     }
 
     private void initializeListView() {
-        final StudentAdapter studentAdapter = new StudentAdapter(this,
-                DummyDataGenerator.getResponseList());
-        mListViewStudent.setAdapter(studentAdapter);
+        mStudentAdapter = new StudentAdapter(this);
+        mListViewStudent.setAdapter(mStudentAdapter);
     }
 
     @Override
@@ -60,7 +67,7 @@ class StudentActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case R.id.actionAdd:
-                addNewItemInList();
+                mStudentPresenter.presentNewItemInList();
                 return true;
             case R.id.actionDetail:
                 Toast.makeText(this, Constants.MenuItems.DETAIL, Toast.LENGTH_SHORT).show();
@@ -76,7 +83,8 @@ class StudentActivity extends AppCompatActivity {
         }
     }
 
-    private void addNewItemInList() {
-
+    @Override
+    public void setStudentList(final List<UserResponse> studentList) {
+        mStudentAdapter.setList(studentList);
     }
 }
