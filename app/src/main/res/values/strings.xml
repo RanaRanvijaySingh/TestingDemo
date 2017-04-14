@@ -3,4 +3,9 @@
     <string name="toast_valid_email">Email address is valid</string>
     <string name="toast_invalid_email">Email is invalid</string>
     <string name="button_spinner_demo">Spinner Demo</string>
+    <string name="button_list_view">List view demo</string>
+    <string name="action_add">Add</string>
+    <string name="action_detail">Detail</string>
+    <string name="action_description">Description</string>
+    <string name="action_help">Help</string>
 </resources>

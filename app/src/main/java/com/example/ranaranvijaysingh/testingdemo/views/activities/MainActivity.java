@@ -59,6 +59,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
         startActivity(intent);
     }
 
+    @OnClick(R.id.buttonListView)
+    public void onListViewButtonClick(final View view) {
+        final Intent intent = new Intent(this, StudentActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public void showInvalidEmailMessage() {
         Toast.makeText(this, Constants.DummyData.INVALID_EMAIL, Toast.LENGTH_SHORT).show();

@@ -26,4 +26,10 @@ public class Constants {
         public static final String INVALID_EMAIL = "Please enter valid email id.";
         public static final String INVALID_PASSWORD = "Please enter password.";
     }
+
+    public class MenuItems {
+        public static final String DETAIL = "Detail";
+        public static final String HELP = "Help";
+        public static final String DESCRIPTION = "Description";
+    }
 }
