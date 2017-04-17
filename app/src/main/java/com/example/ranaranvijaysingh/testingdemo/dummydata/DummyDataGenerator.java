@@ -14,7 +14,7 @@ public class DummyDataGenerator {
     public static final String JSON_RESPONE = "[\n" +
             "  {\n" +
             "    \"id\": 1,\n" +
-            "    \"name\": \"Leanne Graham\",\n" +
+            "    \"name\": \"Ervin Howell\",\n" +
             "    \"username\": \"Bret\",\n" +
             "    \"email\": \"Sincere@april.biz\",\n" +
             "    \"address\": {\n" +

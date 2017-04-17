@@ -48,4 +48,8 @@ public class StudentPresenter {
         mClickCount++;
         return userResponse;
     }
+
+    public void presentClickedItem(final int position) {
+        mStudentView.showClickedItem(mStudentList.get(position).getName());
+    }
 }

@@ -25,6 +25,7 @@ public class Constants {
         public static final String ERROR = "Unable to fetch data";
         public static final String INVALID_EMAIL = "Please enter valid email id.";
         public static final String INVALID_PASSWORD = "Please enter password.";
+        public static final String NEW_ITEM_ADDED = "New item added";
     }
 
     public class MenuItems {

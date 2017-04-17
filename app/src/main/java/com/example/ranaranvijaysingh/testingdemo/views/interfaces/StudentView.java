@@ -11,4 +11,6 @@ import java.util.List;
 
 public interface StudentView {
     void setStudentList(List<UserResponse> studentList);
+
+    void showClickedItem(String userName);
 }
