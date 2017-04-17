@@ -40,8 +40,12 @@ public class StudentActivity extends AppCompatActivity implements StudentView, A
     private StudentPresenter mStudentPresenter;
     private StudentAdapter mStudentAdapter;
 
+    public StudentAdapter getStudentAdapter() {
+        return mStudentAdapter;
+    }
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students);
         ButterKnife.bind(this);

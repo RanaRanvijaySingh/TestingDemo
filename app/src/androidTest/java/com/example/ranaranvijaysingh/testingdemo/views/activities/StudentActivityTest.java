@@ -8,7 +8,10 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.ranaranvijaysingh.testingdemo.R;
+import com.example.ranaranvijaysingh.testingdemo.models.UserResponse;
 import com.example.ranaranvijaysingh.testingdemo.utilities.Constants;
+
+import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,7 +19,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.List;
+
+import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
@@ -24,6 +31,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.hasSibling;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static junit.framework.Assert.assertEquals;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
@@ -47,20 +55,11 @@ public class StudentActivityTest {
     }
 
     @Test
-    public void listItemClickTest() throws Exception {
-        //Perform a click on the list item who as name as "Ervin Howell" and email as "Shanna@melissa.tv"
-        onView(allOf(withText("Ervin Howell"), hasSibling(withText("Shanna@melissa.tv"))))
-                .perform(click());
-
-        //Check if the toast message was shown or not.
-        onView(ViewMatchers.withText("Ervin Howell"))
-                .inRoot(withDecorView(not(
-                        is(mActivityTestRule.getActivity().getWindow().getDecorView()))))
-                .check(matches(isDisplayed()));
-    }
-
-    @Test
     public void testClickOnPlusIconOnActionBar() throws Exception {
+        //Get current list from adapter
+        final List<UserResponse> userResponseList = mActivityTestRule.getActivity()
+                .getStudentAdapter().getList();
+        final int previousListSize = userResponseList.size();
         //Click on toolbar
         onView(withId(R.id.toolbar))
                 .perform(click());
@@ -74,6 +73,93 @@ public class StudentActivityTest {
                 .inRoot(withDecorView(not(
                         is(mActivityTestRule.getActivity().getWindow().getDecorView()))))
                 .check(matches(isDisplayed()));
+
+        //Assert on the adapter list size - The list size should increase with one.
+        assertEquals((previousListSize + 1),
+                mActivityTestRule.getActivity().getStudentAdapter().getList().size());
+
+    }
+
+    @Test
+    public void testClickOnDescriptionOptionOnActionBar() throws Exception {
+        //Click on toolbar
+        onView(withId(R.id.toolbar))
+                .perform(click());
+
+        // Open the overflow menu OR open the options menu,
+        // depending on if the device has a hardware or software overflow menu button.
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+
+        //Click on add icon
+        onView(withText(Constants.MenuItems.DESCRIPTION))
+                .perform(click());
+
+        //Check if the toast message was shown or not.
+        onView(ViewMatchers.withText(Constants.MenuItems.DESCRIPTION))
+                .inRoot(withDecorView(not(
+                        is(mActivityTestRule.getActivity().getWindow().getDecorView()))))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testClickOnDetailOptionOnActionBar() throws Exception {
+        //Click on toolbar
+        onView(withId(R.id.toolbar))
+                .perform(click());
+
+        // Open the overflow menu OR open the options menu,
+        // depending on if the device has a hardware or software overflow menu button.
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+
+        //Click on add icon
+        onView(withText(Constants.MenuItems.DETAIL))
+                .perform(click());
+
+        //Check if the toast message was shown or not.
+        onView(ViewMatchers.withText(Constants.MenuItems.DETAIL))
+                .inRoot(withDecorView(not(
+                        is(mActivityTestRule.getActivity().getWindow().getDecorView()))))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testClickOnHelpOptionOnActionBar() throws Exception {
+        //Click on toolbar
+        onView(withId(R.id.toolbar))
+                .perform(click());
+
+        // Open the overflow menu OR open the options menu,
+        // depending on if the device has a hardware or software overflow menu button.
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+
+        //Click on add icon
+        onView(withText(Constants.MenuItems.HELP))
+                .perform(click());
+
+        //Check if the toast message was shown or not.
+        onView(ViewMatchers.withText(mContect.getResources().getString(R.string.action_help)))
+                .inRoot(withDecorView(not(
+                        is(mActivityTestRule.getActivity().getWindow().getDecorView()))))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void listItemClickTest() throws Exception {
+        //Perform a click on the list item who as name as "Ervin Howell" and email as "Shanna@melissa.tv"
+        onView(allOf(withText("Ervin Howell"), hasSibling(withText("Shanna@melissa.tv"))))
+                .perform(click());
+
+        //Check if the toast message was shown or not.
+        onView(ViewMatchers.withText("Ervin Howell"))
+                .inRoot(withDecorView(not(
+                        is(mActivityTestRule.getActivity().getWindow().getDecorView()))))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testViewNotPresentInList() throws Exception {
+        onView(allOf(withId(R.id.textViewPhone), hasSibling(withText("Karley_Dach@jasper.info"))))
+                .check(matches(not(isDisplayed())));
     }
 
     @After

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
+              xmlns:tool="http://schemas.android.com/tools"
               android:id="@+id/activity_main"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:layout_margin="@dimen/activity_horizontal_margin"
               android:gravity="center"
-              android:orientation="vertical"
-              tools:context="com.example.ranaranvijaysingh.testingdemo.views.activities.MainActivity">
+              android:orientation="vertical">
 
     <EditText
         android:id="@+id/editTextEmailAddress"
@@ -31,7 +30,7 @@
         android:id="@+id/progressBarLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"/>
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textViewResponse"
@@ -50,4 +49,23 @@
         android:layout_height="wrap_content"
         android:text="@string/button_list_view"/>
 
+    <Button
+        android:id="@+id/buttonRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_recycler_view"/>
+
+    <TextView
+        android:id="@+id/textViewCounter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="40dp"
+        tool:text="0"/>
+
+    <Button
+        android:id="@+id/buttonStartCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_start_counter"/>
 </LinearLayout>

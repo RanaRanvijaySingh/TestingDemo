@@ -21,6 +21,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.R.attr.id;
+import static android.R.attr.onClick;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -50,6 +52,7 @@ public class MainActivityTest {
     public void setUp() {
         Intents.init();
         mContect = InstrumentationRegistry.getTargetContext();
+        Espresso.registerIdlingResources(mActivityRule.getActivity().getIdlingResource());
     }
 
     @Test
@@ -138,8 +141,23 @@ public class MainActivityTest {
                 ".SpinnerDemoActivity"));
     }
 
+    @Test
+    public void textCounterFunction() throws Exception {
+        //Click on start counter button
+        onView(withId(R.id.buttonStartCounter))
+                .perform(click());
+
+        //Check if the toast message is poped up
+        onView(ViewMatchers.withText(mActivityRule.getActivity().getResources()
+                .getString(R.string.toast_counter_end)))
+                .inRoot(withDecorView(not(is
+                        (mActivityRule.getActivity().getWindow().getDecorView()))))
+                .check(matches(isDisplayed()));
+    }
+
     @After
     public void tearDown() throws Exception {
         Intents.release();
+        Espresso.unregisterIdlingResources(mActivityRule.getActivity().getIdlingResource());
     }
 }

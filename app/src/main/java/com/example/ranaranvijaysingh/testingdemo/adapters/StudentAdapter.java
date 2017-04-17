@@ -51,11 +51,18 @@ public class StudentAdapter extends BaseAdapter {
         textViewName.setText(mStudentList.get(position).getName());
         textViewEmail.setText(mStudentList.get(position).getEmail());
         textViewPhone.setText(mStudentList.get(position).getPhone());
+        if (position % 5 == 0) {
+            textViewPhone.setVisibility(View.GONE);
+        }
         return convertView;
     }
 
     public void setList(final List<UserResponse> studentList) {
         mStudentList = studentList;
         notifyDataSetChanged();
+    }
+
+    public List<UserResponse> getList() {
+        return mStudentList;
     }
 }

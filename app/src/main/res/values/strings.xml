@@ -8,4 +8,8 @@
     <string name="action_detail">Detail</string>
     <string name="action_description">Description</string>
     <string name="action_help">Help</string>
+    <string name="button_start_counter">0 - 10 counter</string>
+    <string name="toast_counter_started">Counter started</string>
+    <string name="toast_counter_end">Counter end</string>
+    <string name="button_recycler_view">Recycler view demo</string>
 </resources>

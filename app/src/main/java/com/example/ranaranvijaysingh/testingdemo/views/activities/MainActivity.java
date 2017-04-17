@@ -1,7 +1,10 @@
 package com.example.ranaranvijaysingh.testingdemo.views.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +24,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
+    private static final long ONE_SECOND_DELAY = 1000;
     @BindView(R.id.editTextEmailAddress)
     EditText mEditTextEmailAddress;
     @BindView(R.id.editTextPassword)
@@ -31,8 +35,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
     ProgressBar mProgressBarLoading;
     @BindView(R.id.textViewResponse)
     TextView mTextViewResponse;
+    @BindView(R.id.textViewCounter)
+    TextView mTextViewCounter;
 
     private MainPresenter mMainPresenter;
+    private final CountingIdlingResource mIdlingResource = new CountingIdlingResource("toast");
+    private int mCounter = 0;
+
+    public CountingIdlingResource getIdlingResource() {
+        return mIdlingResource;
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -63,6 +75,35 @@ public class MainActivity extends AppCompatActivity implements MainView {
     public void onListViewButtonClick(final View view) {
         final Intent intent = new Intent(this, StudentActivity.class);
         startActivity(intent);
+    }
+
+
+    @OnClick(R.id.buttonRecyclerView)
+    public void onRecyclerViewButtonClick(final View view) {
+        final Intent intent = new Intent(this, RecyclerViewDemoActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.buttonStartCounter)
+    public void onStartCounterButtonClick(final View view) {
+        Toast.makeText(this, R.string.toast_counter_started, Toast.LENGTH_SHORT).show();
+        final Handler handler = new Handler();
+        mIdlingResource.increment();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mTextViewCounter.setText(String.valueOf(mCounter++));
+                if (mCounter > 10) {
+                    handler.removeCallbacks(this);
+                    Toast.makeText(MainActivity.this, R.string.toast_counter_end,
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    handler.postDelayed(this, ONE_SECOND_DELAY);
+                    mIdlingResource.increment();
+                }
+                mIdlingResource.decrement();
+            }
+        }, ONE_SECOND_DELAY);
     }
 
     @Override
