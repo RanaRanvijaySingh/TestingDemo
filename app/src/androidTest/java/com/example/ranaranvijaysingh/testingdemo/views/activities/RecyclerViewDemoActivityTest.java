@@ -55,7 +55,7 @@ public class RecyclerViewDemoActivityTest {
     public void testScrollAndClickOnBelowItems() throws Exception {
         //Scroll to item position
         onView(withId(R.id.recyclerView))
-                .perform(scrollToHolder(new CustomViewHolderMatcher()).atPosition(9));
+                .perform(scrollToHolder(new DummyViewHolderMatcher()).atPosition(9));
 
         //Click on any item in recycler view
         onView(withId(R.id.recyclerView))
@@ -67,13 +67,13 @@ public class RecyclerViewDemoActivityTest {
                 .check(matches(isDisplayed()));
     }
 
-    private static class CustomViewHolderMatcher extends TypeSafeMatcher<RecyclerView.ViewHolder> {
+    private static class DummyViewHolderMatcher extends TypeSafeMatcher<RecyclerView.ViewHolder> {
         private Matcher<View> itemMatcher = any(View.class);
 
-        public CustomViewHolderMatcher() {
+        public DummyViewHolderMatcher() {
         }
 
-        public CustomViewHolderMatcher(Matcher<View> itemMatcher) {
+        public DummyViewHolderMatcher(Matcher<View> itemMatcher) {
             this.itemMatcher = itemMatcher;
         }
 
