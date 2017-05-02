@@ -1,0 +1,7 @@
+
+\squid:S2094"BRemove this empty class, write its code or make it an "interface".(Ðíõªúÿÿÿÿ
+Osquid:S1118":Add a private constructor to hide the implicit public one.(œö³æ
+Tsquid:S1118":Add a private constructor to hide the implicit public one.(ˆ©ÖÀüÿÿÿÿ
+hsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ðíõªúÿÿÿÿ
+hsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ˆ©ÖÀüÿÿÿÿ
+usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(–êâžúÿÿÿÿ
