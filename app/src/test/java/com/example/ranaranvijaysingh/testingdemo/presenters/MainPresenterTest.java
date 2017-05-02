@@ -48,6 +48,5 @@ public class MainPresenterTest {
         when(mMainView.getEmailAddress()).thenReturn("a@a.com");
         mMainPresenter.onClickEmailCheckButton();
         verify(mMainView).showValidEmailMessage(true);
-
     }
 }

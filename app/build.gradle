@@ -53,9 +53,6 @@ dependencies {
     androidTestCompile("com.android.support.test:runner:$rootProject.ext.testRunnerVersion", {
         exclude group: 'com.android.support'
     })
-    androidTestCompile('com.android.support.test:testing-support-lib:0.1', {
-        exclude group: 'com.android.support'
-    })
     androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.0', {
         exclude group: 'com.android.support'
     })
