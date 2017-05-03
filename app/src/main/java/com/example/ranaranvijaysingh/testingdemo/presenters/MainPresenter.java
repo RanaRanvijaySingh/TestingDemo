@@ -1,7 +1,5 @@
 package com.example.ranaranvijaysingh.testingdemo.presenters;
 
-import android.text.TextUtils;
-
 import com.example.ranaranvijaysingh.testingdemo.models.UserResponse;
 import com.example.ranaranvijaysingh.testingdemo.utilities.Constants;
 import com.example.ranaranvijaysingh.testingdemo.utilities.ValidationUtil;
@@ -29,16 +27,16 @@ public class MainPresenter {
         mCallListUserResponse = apiInterface.getUsers();
     }
 
-    private boolean isValidEmail(final String emailAddress) {
+    public boolean isValidEmail(final String emailAddress) {
         return emailAddress != null
                 && !emailAddress.isEmpty()
                 && ValidationUtil.isValidEmailAddress(emailAddress);
     }
 
     public void verifyLoginCredentials(final String email, final String password) {
-        if (TextUtils.isEmpty(email) || !isValidEmail(email)) {
+        if (!isValidEmail(email)) {
             mMainView.showInvalidEmailMessage();
-        } else if (TextUtils.isEmpty(password)) {
+        } else if (password == null || password.trim().length() <= 0) {
             mMainView.showInvalidPasswordMessage();
         } else {
             verifyLoginFromServer();

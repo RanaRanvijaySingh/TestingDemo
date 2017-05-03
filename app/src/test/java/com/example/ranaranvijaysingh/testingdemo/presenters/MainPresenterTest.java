@@ -1,52 +1,51 @@
 package com.example.ranaranvijaysingh.testingdemo.presenters;
 
-import com.example.ranaranvijaysingh.testingdemo.models.Student;
-import com.example.ranaranvijaysingh.testingdemo.utilities.Constants;
 import com.example.ranaranvijaysingh.testingdemo.views.interfaces.MainView;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 /**
  * Created by on 14/02/17.
  * Purpose of this class is to
  */
-
+@RunWith(MockitoJUnitRunner.class)
 public class MainPresenterTest {
-    MainPresenter mMainPresenter;
     @Mock
     MainView mMainView;
-
-    Student mStudent;
+    @InjectMocks
+    MainPresenter mMainPresenter;
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
         mMainPresenter = new MainPresenter(mMainView);
     }
 
     @Test
-    public void getStudentTest() {
-        mStudent = mMainPresenter.getStudentData();
-        assertEquals(Constants.DummyData.FIRST_NAME, mStudent.getFirstName());
+    public void isValidEmailTest() throws Exception {
+        Assert.assertTrue(mMainPresenter.isValidEmail("hello@gmail.com"));
+    }
+
+    /**
+     * public void verifyLoginCredentials(final String email, final String password)
+     */
+    @Test
+    public void verifyLoginCredentialsTestForInvalidEmailId() throws Exception {
+        mMainPresenter.verifyLoginCredentials("a@a", "password");
+        verify(mMainView).showInvalidEmailMessage();
     }
 
     @Test
-    public void presentFullNameTest() {
-        mMainPresenter.presentFullName();
-        verify(mMainView).setFullName("First Second Last");
-    }
-
-    @Test
-    public void onClickEmailCheckButtonTest() throws Exception {
-        when(mMainView.getEmailAddress()).thenReturn("a@a.com");
-        mMainPresenter.onClickEmailCheckButton();
-        verify(mMainView).showValidEmailMessage(true);
+    public void verifyLoginCredentialsTestForInvalidPassword() throws Exception {
+        mMainPresenter.verifyLoginCredentials("a@a.com", "");
+        verify(mMainView).showInvalidPasswordMessage();
     }
 }

@@ -33,7 +33,7 @@ android {
     sonarqube {
         properties {
             property "sonar.java.binaries", "build/intermediates/classes/debug"
-            property "sonar.jacoco.reportPaths", "build/outputs/code-coverage/connected/coverage.ec"
+            property "sonar.jacoco.reportPaths", "build/outputs/code-coverage/connected/Nexus_5_API_23(AVD) - 6.0-coverage.ec"
         }
     }
 }
