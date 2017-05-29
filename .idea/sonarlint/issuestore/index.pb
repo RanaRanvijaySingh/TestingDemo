@@ -115,20 +115,6 @@ u
 Eapp/build/generated/source/r/debug/android/support/mediacompat/R.java,7/d/7d7070c35b9d584f42473e8f0c813cf1d0a3da0f
 e
 5app/build/generated/source/r/debug/butterknife/R.java,9/0/90be1be01eb3f12183eb1c2328ecaae66c98945c
-”
-dapp/build/generated/source/r/androidTest/debug/com/example/ranaranvijaysingh/testingdemo/test/R.java,3/7/37be4864cf946ba473e30574a4c6c51f6c29ba4a
-q
-Aapp/build/generated/source/r/androidTest/debug/android/app/R.java,d/b/dbfbcc97afd3f8a212052f6a44eb3831a1bcf666
-
-Oapp/build/generated/source/r/androidTest/debug/android/support/test/rule/R.java,9/2/9211fd7f8bf1e867da1269b703719c47cbb7448c
-z
-Japp/build/generated/source/r/androidTest/debug/android/support/test/R.java,2/1/211d400c12aa871304996da0861b647cfb977f8e
-Š
-Zapp/build/generated/source/r/androidTest/debug/android/support/test/espresso/intent/R.java,a/4/a40b8f3d52e1fc7eff44968c7aa99ce753186192
-ƒ
-Sapp/build/generated/source/r/androidTest/debug/android/support/test/espresso/R.java,9/0/90398f7944fecc0f98d3c79382bd16283f59bf9d
-‹
-[app/build/generated/source/r/androidTest/debug/android/support/test/espresso/contrib/R.java,3/0/301105bc84bf52b83448a8f3a0f5db2d078b66d1
 ­
 }app/build/generated/source/apt/debug/com/example/ranaranvijaysingh/testingdemo/views/activities/MainActivity_ViewBinding.java,b/3/b3695db928e6ad6205b9928530c21c7e14f9cfac
 ±
@@ -139,10 +125,6 @@ Sapp/build/generated/source/r/androidTest/debug/android/support/test/espresso/R.
 ‰app/build/generated/source/apt/debug/com/example/ranaranvijaysingh/testingdemo/views/activities/RecyclerViewDemoActivity_ViewBinding.java,c/f/cfed2d449864282fa65b78936e1b814e027fd4e8
 —
 gapp/build/generated/source/buildConfig/debug/com/example/ranaranvijaysingh/testingdemo/BuildConfig.java,5/e/5e7b0802cc7ead129a4d93ad61696eec0157645c
-¨
-xapp/build/generated/source/buildConfig/androidTest/debug/com/example/ranaranvijaysingh/testingdemo/test/BuildConfig.java,6/2/628bab121991075902459a7a876ed53d8ade4869
-v
-Fapp/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml,6/1/612776d789610affa07ced6777dbfcfa81f636ab
 >
 app/.gitignore,5/1/51e1c5d383dfaa35e0e7e5873a0a99355a86880f
 F
@@ -166,5 +148,3 @@ A
 gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
 @
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
-@
-sonarqube.gradle,5/4/5463f4105c9e940999eef70b0958b43275894f1c

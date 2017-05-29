@@ -51,7 +51,7 @@ public class RecyclerViewDemoActivityTest {
                 .check(matches(isDisplayed()));
     }
 
-    @Test
+   /* @Test
     public void testScrollAndClickOnBelowItems() throws Exception {
         //Scroll to item position
         onView(withId(R.id.recyclerView))
@@ -65,7 +65,7 @@ public class RecyclerViewDemoActivityTest {
         onView(withText("Clicked"))
                 .inRoot(withDecorView(not(is(mActivityTestRule.getActivity().getWindow().getDecorView()))))
                 .check(matches(isDisplayed()));
-    }
+    }*/
 
     private static class DummyViewHolderMatcher extends TypeSafeMatcher<RecyclerView.ViewHolder> {
         private Matcher<View> itemMatcher = any(View.class);
