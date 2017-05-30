@@ -52,11 +52,6 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> mActivityRule =
             new ActivityTestRule(MainActivity.class);
 
-    @BeforeClass
-    public static void beforeAll() {
-        Screengrab.setDefaultScreenshotStrategy(new UiAutomatorScreenshotStrategy());
-    }
-
     @Before
     public void setUp() {
         Intents.init();
@@ -114,7 +109,7 @@ public class MainActivityTest {
         //Check if the response is displayed on the text view
         /*onView(ViewMatchers.withId(R.id.textViewResponse))
                 .check(ViewAssertions.matches(withText(Constants.StringValues.BLANK)));*/
-        Screengrab.screenshot("loginFlowTestForInvalidEmail");
+        //Screengrab.screenshot("loginFlowTestForInvalidEmail");
     }
 
     @Test
@@ -141,7 +136,7 @@ public class MainActivityTest {
         //Check if the response is displayed on the text view
         onView(ViewMatchers.withId(R.id.textViewResponse))
                 .check(ViewAssertions.matches(withText(Constants.StringValues.BLANK)));
-        Screengrab.screenshot("loginFlowTestForInvalidPassword");
+        //Screengrab.screenshot("loginFlowTestForInvalidPassword");
     }
 
     @Test
@@ -150,7 +145,7 @@ public class MainActivityTest {
                 .perform(click());
         intended(hasComponent("com.example.ranaranvijaysingh.testingdemo.views.activities" +
                 ".SpinnerDemoActivity"));
-        Screengrab.screenshot("newActivityLaunchTest");
+        //Screengrab.screenshot("newActivityLaunchTest");
     }
 
     @Test
@@ -165,7 +160,7 @@ public class MainActivityTest {
                 .inRoot(withDecorView(not(is
                         (mActivityRule.getActivity().getWindow().getDecorView()))))
                 .check(matches(isDisplayed()));
-        Screengrab.screenshot("textCounterFunction");
+        //Screengrab.screenshot("textCounterFunction");
     }
 
     @After

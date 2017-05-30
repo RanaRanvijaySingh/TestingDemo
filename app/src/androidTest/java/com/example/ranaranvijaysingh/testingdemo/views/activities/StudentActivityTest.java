@@ -74,7 +74,7 @@ public class StudentActivityTest {
         //Assert on the adapter list size - The list size should increase with one.
         assertEquals((previousListSize + 1),
                 mActivityTestRule.getActivity().getStudentAdapter().getList().size());
-        Screengrab.screenshot("testClickOnPlusIconOnActionBar");
+        //Screengrab.screenshot("testClickOnPlusIconOnActionBar");
 
     }
 /*
@@ -118,7 +118,7 @@ public class StudentActivityTest {
                 .inRoot(withDecorView(not(
                         is(mActivityTestRule.getActivity().getWindow().getDecorView()))))
                 .check(matches(isDisplayed()));*/
-        Screengrab.screenshot("testClickOnDetailOptionOnActionBar");
+        //Screengrab.screenshot("testClickOnDetailOptionOnActionBar");
 
     }
 
@@ -141,7 +141,7 @@ public class StudentActivityTest {
                 .inRoot(withDecorView(not(
                         is(mActivityTestRule.getActivity().getWindow().getDecorView()))))
                 .check(matches(isDisplayed()));*/
-        Screengrab.screenshot("testClickOnHelpOptionOnActionBar");
+        //Screengrab.screenshot("testClickOnHelpOptionOnActionBar");
 
     }
 

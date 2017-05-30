@@ -39,7 +39,7 @@ public class RecyclerViewDemoActivityTest {
         //Click on any item in recycler view
         onView(withId(R.id.recyclerView))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(3, click()));
-        Screengrab.screenshot("testOnClickForVisibleItem");
+        //Screengrab.screenshot("testOnClickForVisibleItem");
 
         //Check of toast message to pop up
         /*onView(withText("Clicked"))

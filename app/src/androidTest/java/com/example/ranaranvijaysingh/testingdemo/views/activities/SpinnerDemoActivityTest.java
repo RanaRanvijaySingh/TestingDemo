@@ -50,7 +50,7 @@ public class SpinnerDemoActivityTest {
         //Verify textview data
         onView(withId(R.id.textViewSpinnerSelection))
                 .check(matches(withText("Spinner item - 21")));
-        Screengrab.screenshot("testSpinnerViewBehaviour");
+        //Screengrab.screenshot("testSpinnerViewBehaviour");
 
     }
 }
