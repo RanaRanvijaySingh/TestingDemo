@@ -1,8 +1,6 @@
 package com.example.ranaranvijaysingh.testingdemo.views.activities;
 
 import android.support.test.espresso.Espresso;
-import android.support.test.espresso.action.ViewActions;
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -12,6 +10,8 @@ import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import tools.fastlane.screengrab.Screengrab;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -50,5 +50,7 @@ public class SpinnerDemoActivityTest {
         //Verify textview data
         onView(withId(R.id.textViewSpinnerSelection))
                 .check(matches(withText("Spinner item - 21")));
+        Screengrab.screenshot("testSpinnerViewBehaviour");
+
     }
 }
