@@ -148,7 +148,7 @@ public class MainActivityTest {
     public void newActivityLaunchTest() throws Exception {
         onView(withId(R.id.buttonSpinnerExample))
                 .perform(click());
-        intended(hasComponent("com.example.ranaranvijaysingh.testingdemo.views.activities" +
+        intended(hasComponent("com.ex.ranaranvijaysingh.testingdemo.views.activities" +
                 ".SpinnerDemoActivity"));
         Screengrab.screenshot("newActivityLaunchTest");
     }

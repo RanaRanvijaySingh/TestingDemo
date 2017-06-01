@@ -1,0 +1,16 @@
+# remove the leading '#' to uncomment lines
+
+app_package_name 'com.ex.ranaranvijaysingh.testingdemo'
+use_tests_in_packages ['com.ex.ranaranvijaysingh.testingdemo']
+
+app_apk_path '/Users/ranaranvijaysingh/AndroidStudioProjects/TestingDemo/app/build/outputs/apk/app-debug.apk'
+tests_apk_path '/Users/ranaranvijaysingh/AndroidStudioProjects/TestingDemo/app/build/outputs/apk/app-debug-androidTest.apk'
+
+#Mention the languages
+locales ['en-US']
+
+# clear all previously generated screenshots in your local output directory before creating new ones
+clear_previous_screenshots true
+
+# For more information about all available options run
+#   fastlane screengrab --help
