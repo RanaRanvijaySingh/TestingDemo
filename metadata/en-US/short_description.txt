@@ -1,1 +1,0 @@
-V3: This is testing demo application

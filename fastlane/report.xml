@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="00: update_fastlane" time="0.145414">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.000872">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="02: Switch to android projectClean lane" time="0.000849">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="03: gradle" time="4.808064">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="04: Switch to android createDebugBuild lane" time="0.00088">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="05: gradle" time="12.339078">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="06: Switch to android runUiTestCases lane" time="0.000962">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: gradle" time="6.996328">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: Switch to android takeScreenshots lane" time="0.000901">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: screengrab" time="44.361937">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: Switch to android makeReleaseBuild lane" time="0.001656">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="11: gradle" time="15.206916">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="12: Switch to android uploadBuild lane" time="0.000873">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="13: supply" time="68.767878">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

@@ -1,0 +1,2 @@
+json_key_file "/Users/ranaranvijaysingh/GooglePlayAndroidDeveloper-4ad1c1334336.json" # Path to the json secret file - Follow https://github.com/fastlane/supply#setup to get one
+package_name "com.ex.ranaranvijaysingh.testingdemo" # e.g. com.krausefx.app
