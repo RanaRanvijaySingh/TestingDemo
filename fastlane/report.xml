@@ -5,72 +5,72 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="00: update_fastlane" time="0.145414">
+      <testcase classname="fastlane.lanes" name="00: update_fastlane" time="0.135046">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.000872">
+      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.000955">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="02: Switch to android projectClean lane" time="0.000849">
+      <testcase classname="fastlane.lanes" name="02: Switch to android projectClean lane" time="0.000846">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="03: gradle" time="4.808064">
+      <testcase classname="fastlane.lanes" name="03: gradle" time="5.09269">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="04: Switch to android createDebugBuild lane" time="0.00088">
+      <testcase classname="fastlane.lanes" name="04: Switch to android createDebugBuild lane" time="0.001035">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="05: gradle" time="12.339078">
+      <testcase classname="fastlane.lanes" name="05: gradle" time="14.364298">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="06: Switch to android runUiTestCases lane" time="0.000962">
+      <testcase classname="fastlane.lanes" name="06: Switch to android runUiTestCases lane" time="0.000919">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="07: gradle" time="6.996328">
+      <testcase classname="fastlane.lanes" name="07: gradle" time="7.313884">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="08: Switch to android takeScreenshots lane" time="0.000901">
+      <testcase classname="fastlane.lanes" name="08: Switch to android takeScreenshots lane" time="0.000898">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="09: screengrab" time="44.361937">
+      <testcase classname="fastlane.lanes" name="09: screengrab" time="43.213526">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="10: Switch to android makeReleaseBuild lane" time="0.001656">
+      <testcase classname="fastlane.lanes" name="10: Switch to android makeReleaseBuild lane" time="0.001812">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="11: gradle" time="15.206916">
+      <testcase classname="fastlane.lanes" name="11: gradle" time="16.777327">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="12: Switch to android uploadBuild lane" time="0.000873">
+      <testcase classname="fastlane.lanes" name="12: Switch to android uploadBuild lane" time="0.001449">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="13: supply" time="68.767878">
+      <testcase classname="fastlane.lanes" name="13: supply" time="69.924663">
         
       </testcase>
     
