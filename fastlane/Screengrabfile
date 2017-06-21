@@ -3,8 +3,8 @@
 app_package_name 'com.ex.ranaranvijaysingh.testingdemo'
 use_tests_in_packages ['com.ex.ranaranvijaysingh.testingdemo']
 
-app_apk_path '/Users/ranaranvijaysingh/AndroidStudioProjects/TestingDemo/app/build/outputs/apk/app-debug.apk'
-tests_apk_path '/Users/ranaranvijaysingh/AndroidStudioProjects/TestingDemo/app/build/outputs/apk/app-debug-androidTest.apk'
+app_apk_path './app/build/outputs/apk/app-debug.apk'
+tests_apk_path './app/build/outputs/apk/app-debug-androidTest.apk'
 
 #Mention the languages
 locales ['en-US']

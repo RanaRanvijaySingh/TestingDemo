@@ -35,6 +35,16 @@ xcode-select --install
 fastlane android deploy
 ```
 Deploy a new version to the Google Play
+### android deployBeta
+```
+fastlane android deployBeta
+```
+Deploy a new version to the Google Play
+### android prepareBuild
+```
+fastlane android prepareBuild
+```
+Deploy a new version to the Google Play
 ### android projectClean
 ```
 fastlane android projectClean
@@ -60,11 +70,16 @@ Creating screenshots. Running screengrab
 fastlane android makeReleaseBuild
 ```
 Creating release build. Running assembleRelease
-### android uploadBuild
+### android uploadBuildProduction
 ```
-fastlane android uploadBuild
+fastlane android uploadBuildProduction
 ```
-Creating release build. Running assembleRelease
+Uploading on production. Running supply(apk: './app/build/outputs/apk/app-release.apk')
+### android uploadBuildBeta
+```
+fastlane android uploadBuildBeta
+```
+Uploading on beta. Running supply(apk: './app/build/outputs/apk/app-release.apk')
 
 ----
 

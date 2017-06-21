@@ -18,12 +18,23 @@ platform :android do
 
     desc "Deploy a new version to the Google Play"
     lane :deploy do
+        prepareBuild
+        uploadBuild
+    end
+
+    desc "Deploy a new version to the Google Play"
+    lane :deployBeta do
+        prepareBuild
+        uploadBuildBeta
+    end
+
+    desc "Deploy a new version to the Google Play"
+    lane :prepareBuild do
         projectClean
         createDebugBuild
         runUiTestCases
         takeScreenshots
         makeReleaseBuild
-        uploadBuild
     end
 
     desc "Project clean up. Running clean"
@@ -43,7 +54,15 @@ platform :android do
 
     desc "Creating screenshots. Running screengrab"
     lane :takeScreenshots do
-        screengrab
+     #   adb(command: "kill-server") #just in case
+     #   adb(command: "start-server")
+
+     #   launch the emulator and detach
+     #   Process.fork {'/Users/ranaranvijaysingh/Library/Android/sdk/tools/emulator -avd
+     #   Nexus_5_API_24 -no-audio  -no-window -gpu off'}
+     #   sleep 40 #give the emu some boot time.
+     #   adb(command: "wait-for-device")
+         screengrab
     end
 
     desc "Creating release build. Running assembleRelease"
@@ -51,8 +70,13 @@ platform :android do
         gradle(task: "assembleRelease")
     end
 
-    desc "Creating release build. Running assembleRelease"
-    lane :uploadBuild do
+    desc "Uploading on production. Running supply(apk: './app/build/outputs/apk/app-release.apk')"
+    lane :uploadBuildProduction do
         supply(apk: './app/build/outputs/apk/app-release.apk')
+    end
+
+    desc "Uploading on beta. Running supply(apk: './app/build/outputs/apk/app-release.apk')"
+    lane :uploadBuildBeta do
+        supply(apk: './app/build/outputs/apk/app-release.apk', track: 'beta')
     end
 end
